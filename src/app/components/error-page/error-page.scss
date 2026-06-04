@@ -1,0 +1,101 @@
+
+$color-primary: #FF6838;      
+$color-primary-hover: #E05326;
+$color-text-main: #000000;     
+$color-text-muted: #666666;   
+$color-bg: #FFFFFF;            
+
+$font-main: 'Poppins', sans-serif;
+
+body {
+    font-family: $font-main;
+    background-color: $color-bg;
+    color: $color-text-main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 200px;
+}
+
+.error-container {
+    padding: 20px;
+    text-align: center;
+    animation: fadeIn 0.6s ease-out;
+
+    .error-content {
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    .error-icon {
+        font-size: 5rem;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .error-code {
+        font-size: 6rem;
+        font-weight: 700;
+        line-height: 1;
+        color: $color-primary;
+        margin-bottom: 0.5rem;
+    }
+
+    .error-title {
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: $color-text-main;
+        margin-bottom: 1rem;
+    }
+
+    .error-message {
+        font-size: 1rem;
+        color: $color-text-muted;
+        line-height: 1.6;
+        margin-bottom: 2.5rem;
+    }
+
+    .btn-primary {
+        display: inline-block;
+        background-color: $color-primary;
+        color: #fff;
+        text-decoration: none;
+        padding: 0.85rem 2.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 30px; 
+        transition: background-color 0.2s ease, transform 0.2s ease;
+        box-shadow: 0 4px 12px rgba($color-primary, 0.2);
+
+        &:hover {
+            background-color: $color-primary-hover;
+            transform: translateY(-2px);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}

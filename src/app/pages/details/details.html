@@ -1,0 +1,110 @@
+<div class="product-details-wrapper">
+  <div class="container">
+
+    <i (click)="backToMenu()" class="fa-solid fa-arrow-left exit-btn"></i>
+    <div class="product-layout">
+      <div class="image-section">
+        <img [src]="product()?.data?.image" [alt]="product()?.data?.name" />
+      </div>
+
+      <div class="info-section">
+        <h1>{{ product()?.data?.name }}</h1>
+
+        <div class="rating-row">
+          <div class="stars">
+            @for (star of stars; track star) {
+              @if ((product()?.data?.rate ?? 0) >= star) {
+                <i class="fa-solid fa-star active"></i>
+              } @else if ((product()?.data?.rate ?? 0) >= star - 0.5) {
+                <i class="fa-solid fa-star-half-stroke active"></i>
+              } @else {
+                <i class="fa-regular fa-star star"></i>
+              }
+            }
+          </div>
+
+          <span>{{ product()?.data?.rate }}</span>
+        </div>
+
+        <h2 class="price">{{ product()?.data?.price | currency: 'USD' : 'symbol' : '1.2-2' }}</h2>
+
+        <div class="vegetarian-badge">
+          @if (product()?.data?.vegetarian) {
+            <i class="fa-solid fa-leaf"></i>
+            Vegetarian
+          }
+        </div>
+
+        @if (product()?.data?.spiciness) {
+          <div class="vegetarian-badge">
+            <i class="fa-solid fa-pepper-hot"></i>
+            Spicy
+          </div>
+        }
+
+        <p class="description">
+          {{ product()?.data?.description }}
+        </p>
+
+        <div class="ingredients-section">
+          <h3>Ingredients:</h3>
+
+          @for (item of product()?.data?.ingredients; track $index) {
+            <ul>
+              <li>{{ item }}</li>
+            </ul>
+          }
+        </div>
+
+        <div class="method-section">
+          <h3>Preparation Method:</h3>
+
+          <p>
+            {{ product()?.data?.method }}
+          </p>
+        </div>
+
+      
+  <div class="quantity-wrapper">
+    <button (click)="decrement()">-</button>
+    <span>{{ quantity() }}</span>
+    <button (click)="increment()">+</button>
+  </div>
+  
+<button
+  class="cart-btn"
+  (click)="product()?.data?.id && addToCart(product()!.data.id)"
+>
+  Add to Cart
+</button>
+
+      </div>
+    </div>
+
+    <section class="section2">
+      <h2>You May Also Like</h2>
+<div class="product-cards">
+        
+        @for (product of allProduct(); track product.id) {
+     <div class="product-card" [routerLink]="['/details', product.id]">
+      <div class="product-img">
+          <img [src]="product.image" [alt]="product.name">
+      </div>
+  
+      <div class="product-info">
+          <h2>{{product.name}}</h2>
+          <p>{{product.description}}</p>
+          
+          <span class="rate">{{product.rate}}</span>
+          
+          <div class="price">{{product.price | currency:'USD':'symbol':'1.2-2'}}</div>
+          
+          <button (click)="addToCart(product.id); $event.stopPropagation()">Add to Cart</button>
+      </div>
+  </div>
+  }
+</div>
+    </section>
+    
+  </div>
+</div>

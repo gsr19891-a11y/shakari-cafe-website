@@ -1,0 +1,94 @@
+<section>
+  <div class="filter-section">
+    @if(filterButton){
+    <form [formGroup]="filterForm">
+      <button class="toggle-btn close-btn" (click)="filterButtonToggle()"><i class="fa-solid fa-x"></i></button>
+      <h2>Filters</h2>
+      <label for="search">Search</label>
+      <input type="text" id="search" placeholder="Search dishes..." formControlName="query" />
+
+      <div class="categories-section">
+        <h3>Categories</h3>
+        <div class="categories">
+          @for (category of categories(); track category.id) {
+            <div class="category">
+              <input
+                type="radio"
+                [id]="'cat-' + category.id"
+                [value]="category.id"
+                formControlName="CategoryId"
+              />
+              <label [for]="'cat-' + category.id">{{ category.name }}</label>
+            </div>
+          }
+
+          <label for="vegetabel">Vegetarian Only 
+          <input type="checkbox" id="vegetabel" formControlName="vegetarian" /></label>
+
+          <label for="spice"> Spiciness(0-5)</label>
+          <input type="number" id="spice" min="0" max="5" formControlName="spiciness" />
+
+          <label for="rating">Minimum Rating</label>
+          <input type="number" id="rating" min="0" max="5" formControlName="rate" />
+
+          <label for="minPrice">Min Price</label>
+          <input type="number" id="minPrice" min="0" formControlName="minPrice" />
+
+          <label for="maxPrice">Max Price</label>
+          <input type="number" id="maxPrice" min="0" formControlName="maxPrice" />
+
+
+          <button type="reset">Reset</button>
+        </div>
+      </div>
+    </form>
+  }
+  </div>
+  <div class="products-section">
+   <div class="menu-header">
+        <h2>Menu</h2>
+        <div class="filter-btns">
+          <p>Showing {{ products().length }} results</p>
+          <button class="toggle-btn" (click)="filterButtonToggle()">Filter <i class="fa-solid fa-sliders"></i></button>
+        </div>
+   </div>
+    @if (products().length === 0) {
+      <div class="not-found">
+        <h2>No products found</h2>
+        <p>Try changing your filters or search query.</p>
+      </div>
+    } @else {
+      @for (product of products(); track product.id) {
+        <div class="product-card" [routerLink]="['/details', product.id]">
+          <div class="product-img">
+            <img [src]="product.image" [alt]="product.name" />
+          </div>
+
+          <div class="product-info">
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+
+            <span class="rate">{{ product.rate }}</span>
+
+            <div class="price">
+              {{ product.price | currency: 'USD' : 'symbol' : '1.2-2' }}
+            </div>
+
+            <button (click)="addToCart(product.id); $event.stopPropagation()">Add to Cart</button>
+          </div>
+        </div>
+      }
+    }
+  </div>
+
+  <form [formGroup]="filterForm">
+    @if (curPage() > 1) {
+    <button type="button" (click)="setPage(1)">1</button>
+      <button type="button" (click)="prevPage()">< Prev</button>
+    }
+
+    @if (hasNextPage()) {
+      <button (click)="nextPage()">Next ></button>
+    }
+  </form>
+</section>

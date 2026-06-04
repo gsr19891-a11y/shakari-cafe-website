@@ -1,0 +1,39 @@
+<main class="auth-section">
+  <div class="auth-container">
+    <div>
+      <h2>Create Account</h2>
+      <p>Join us today</p>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+   <div class="name-row">
+  <div class="input-group">
+    <label for="firstName">First Name</label>
+    <input type="text" formControlName="firstName" id="firstName" placeholder="John" />
+  </div>
+
+  <div class="input-group">
+    <label for="lastName">Last Name</label>
+    <input type="text" formControlName="lastName" id="lastName" placeholder="Doe" />
+  </div>
+</div>
+
+<label for="email">Email</label>
+<input type="email" formControlName="email" id="email" placeholder="you@example.com" />
+
+<label for="password">Password</label>
+<input type="password" formControlName="password" id="password" />
+
+
+<ul class="password-requirements">
+  <li>At least 8 characters</li>
+  <li>Uppercase and lowercase letters</li>
+  <li>At least one number</li>
+</ul>
+
+<button type="submit">Create Account</button>
+
+      <p class="signup-text">Already have an account? <a routerLink="/auth/login">Sign in</a></p>
+    </form>
+  </div>
+</main>

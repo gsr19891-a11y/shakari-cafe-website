@@ -1,0 +1,215 @@
+header {
+  width: 100%;
+  position: sticky;
+  top: -10px;
+  background-color: #fff;
+  z-index: 999;
+  box-shadow: 0 10px 40px rgba(102, 102, 102, 0.1);
+  min-width: 200px;
+
+  .header-sec {
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 100px;
+    background-color: #ffffff5b;
+    margin: 0 auto;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      h1 {
+        font-size: 32px;
+        color: #ff6b35;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        a {
+          color: #000;
+          font-weight: 500;
+
+          &.active,
+          &:hover {
+            color: #ff6b35;
+          }
+        }
+      }
+    } //logo
+
+    .basket-icon {
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 20%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+
+      i {
+        font-size: 18px;
+      }
+
+      &:hover {
+        background-color: rgb(236, 236, 236);
+      }
+
+      .quantity-span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #ff6b35;
+        color: white;
+        font-size: 12px;
+      }
+    }
+
+    .user-icon {
+      cursor: pointer;
+      background-color: #ff6b35;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20%;
+      color: #fff;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        background-color: #e55a2bc0;
+      }
+    }
+
+    .regiser-nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      .login-signup {
+        display: flex;
+        gap: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        border: 1px solid;
+      }
+      .loginBtn {
+        background-color: #ff6b35;
+        color: #fff;
+
+        &:hover {
+          background: #ffffff;
+          color: #ff6b35;
+          border: #ff6b35 1px solid;
+        }
+
+        &:active {
+          transform: scale(0.98);
+        }
+      }
+      .signupBtn {
+        background-color: #fff;
+        color: #ff6b35;
+        border: 1px solid #ff6b35;
+
+        &:hover {
+          background: #ff6b35;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .header-sec {
+    padding: 15px 10px !important;
+  }
+  .header {
+    padding-top: 20px !important;
+  }
+  h1 {
+    font-size: 20px !important;
+  }
+
+  .login-signup {
+    gap: 10px !important;
+  }
+  button {
+    padding: 10px !important;
+    font-size: 12px !important;
+  }
+
+  nav {
+    gap: 10px !important;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 319px) {
+  .header-sec {
+    padding: 5px!important;
+  }
+  .header {
+    padding-top: 20px !important;
+  }
+  h1 {
+    display: none;
+  }
+
+  i{
+  font-size: 12px !important;
+  }
+
+  a{
+  font-size: 14px;}
+
+  .login-signup {
+    gap: 10px !important;
+  }
+  button {
+    padding: 10px !important;
+    font-size: 12px !important;
+  }
+
+  nav {
+    gap: 10px !important;
+  }
+
+  .user-icon{
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+   .regiser-nav {
+      gap: 5px !important;
+
+      .login-signup {
+        gap: 5px !important;
+      }}
+  button {
+    padding: 5px !important;
+    font-size: 10px !important;
+  }
+
+  nav {
+    gap: 10px !important;
+  }
+}

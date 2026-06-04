@@ -1,0 +1,35 @@
+<header>
+
+<section class="header-sec">
+      <div class="logo">
+        <h1 routerLink="/">Foodie</h1>
+        <nav>
+          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+          <a routerLink="/menu" routerLinkActive="active">Menu</a>
+        </nav>
+      </div>
+      
+      <div class="regiser-nav">
+        @if(currentUser()){
+        <div class="basket-icon">
+          <span class="quantity-span">{{cartQuantity()}}</span>
+          <i class="fa-solid fa-cart-shopping " routerLink="/cart"></i>
+        </div>
+      }
+        @if(!currentUser()){
+        <div  class="login-signup">
+          <button class="loginBtn" routerLink="/auth/login">Login</button>
+          <button class="signupBtn" routerLink="/auth/register">Sign Up</button>
+        </div>
+      }@else {
+        <div class="user-icon" routerLink="/user">
+          <i class="fa-regular fa-user"></i>
+        </div>
+        
+      
+      }
+
+      </div>
+    
+</section>
+</header>
