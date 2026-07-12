@@ -196,8 +196,8 @@ public products = [
   {
     id:1,
     name:"Choux Rose(Shu)",
-    image1:"/shu1.png",
-    image2:"/shu2.png",
+    image1:"/shu1.webp",
+    image2:"/shu2.webp",
     price:8,
     vegeterian:false,
     categoryId: 1
@@ -205,8 +205,8 @@ public products = [
    {
     id:2,
     name:"Choux Cream Cake",
-    image1:"/cake1.png",
-    image2:"/cake2.png",
+    image1:"/cake1.webp",
+    image2:"/cake2.webp",
     price:8,
     vegeterian:false,
     categoryId: 1
@@ -214,11 +214,11 @@ public products = [
     {
     id:3,
     name:"Eclairs",
-    image1:"/ecl1.png",
-    image2:"/ecl2.png",
-    image3:"/ecl3.png",
-    image4:"/ecl4.png",
-    image5:"/ecl5.png",
+    image1:"/ecl1.webp",
+    image2:"/ecl2.webp",
+    image3:"/ecl3.webp",
+    image4:"/ecl4.webp",
+    image5:"/ecl5.webp",
     price:20,
     vegeterian:false,
     categoryId: 1
@@ -226,9 +226,9 @@ public products = [
     {
     id:4,
     name:"Strawberry in Chocolate",
-    image1:"/str1.png",
-    image2:"/str2.png",
-    image3:"/str3.png",
+    image1:"/str1.webp",
+    image2:"/str2.webp",
+    image3:"/str3.webp",
     price:8,
     vegeterian:false,
     categoryId: 1
@@ -236,8 +236,8 @@ public products = [
     {
     id:5,
     name:"Syrniki with persimmon",
-    image1:"/sir1.png",
-    image2:"/sir2.png",
+    image1:"/sir1.webp",
+    image2:"/sir2.webp",
     price:8,
     vegeterian:false,
     categoryId: 1
@@ -245,7 +245,7 @@ public products = [
     {
     id:6,
     name:"Herring",
-    image1:"/herring.png",
+    image1:"/herring.webp",
     price:12,
     vegeterian:false,
     categoryId: 2
@@ -253,7 +253,7 @@ public products = [
     {
     id:7,
     name:"Olivier",
-    image1:"/oliv.png",
+    image1:"/oliv.webp",
     price:12,
     vegeterian:false,
     categoryId: 2
@@ -261,7 +261,7 @@ public products = [
     {
     id:8,
     name:"Vinaigrette",
-    image1:"/vin.png",
+    image1:"/vin.webp",
     price:7,
     vegeterian:true,
     categoryId: 2
@@ -269,7 +269,7 @@ public products = [
     {
     id:9,
     name:"Chickpea Soup",
-    image1:"/chi.png",
+    image1:"/chi.webp",
     price:6,
     vegeterian:false,
     categoryId: 2
@@ -277,7 +277,7 @@ public products = [
     {
     id:10,
     name:"Buckwheat",
-    image1:"/buck.png",
+    image1:"/buck.webp",
     price:5,
     vegeterian:true,
     categoryId: 2
@@ -285,7 +285,7 @@ public products = [
     {
     id:11,
     name:"Scramles",
-    image1:"/scra.png",
+    image1:"/scra.webp",
     price:24,
     vegeterian:false,
     categoryId: 2
@@ -293,7 +293,7 @@ public products = [
     {
     id:12,
     name:"Rice",
-    image1:"/rice.png",
+    image1:"/rice.webp",
     price:5,
     vegeterian:true,
     categoryId: 2
@@ -301,7 +301,7 @@ public products = [
     {
     id:13,
     name:"Bryanik",
-    image1:"/bry.png",
+    image1:"/bry.webp",
     price:24,
     vegeterian:false,
     categoryId: 2
@@ -309,7 +309,7 @@ public products = [
     {
     id:14,
     name:"Briosche",
-    image1:"/bri.png",
+    image1:"/bri.webp",
     price:14,
     vegeterian:true,
     categoryId: 2
@@ -317,7 +317,7 @@ public products = [
     {
     id:15,
     name:"Bliny Classic ",
-    image1:"/blic.png",
+    image1:"/blic.webp",
     price:12,
     vegeterian:false,
     categoryId: 2
