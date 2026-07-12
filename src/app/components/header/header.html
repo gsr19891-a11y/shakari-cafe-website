@@ -1,35 +1,103 @@
 <header>
-
-<section class="header-sec">
-      <div class="logo">
-        <h1 routerLink="/">Foodie</h1>
-        <nav>
-          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
-          <a routerLink="/menu" routerLinkActive="active">Menu</a>
-        </nav>
+  <section class="header-sec">
+    <div class="logo">
+      <div routerLink="/">
+        <h1>• SHAKARI •</h1>
+        <p>SYRNIKI • CAFE</p>
       </div>
-      
-      <div class="regiser-nav">
-        @if(currentUser()){
-        <div class="basket-icon">
-          <span class="quantity-span">{{cartQuantity()}}</span>
-          <i class="fa-solid fa-cart-shopping " routerLink="/cart"></i>
-        </div>
-      }
-        @if(!currentUser()){
-        <div  class="login-signup">
-          <button class="loginBtn" routerLink="/auth/login">Login</button>
-          <button class="signupBtn" routerLink="/auth/register">Sign Up</button>
-        </div>
-      }@else {
-        <div class="user-icon" routerLink="/user">
-          <i class="fa-regular fa-user"></i>
-        </div>
-        
-      
-      }
+    </div>
 
-      </div>
     
-</section>
+
+    <nav>
+      
+      <select (change)="changeLang($event)" class="lang-select">
+      <option disabled selected>{{ 'LANGUAGE' | translate }}</option>
+      <option value="ka">ქართული</option>
+      <option value="en">English</option>
+      <option value="ru">Русский</option>
+    </select>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{ langService.translate('NAV.HOME') }}</a>
+
+<a routerLink="/menu" routerLinkActive="active">{{ langService.translate('NAV.MENU') }}</a>
+
+      <a routerLink="/about" routerLinkActive="active">
+        {{ 'NAV.ABOUT' | translate }}
+      </a>
+
+      <a routerLink="/gallery" routerLinkActive="active">
+        {{ 'NAV.GALLERY' | translate }}
+      </a>
+    </nav>
+
+    <div (click)="toggleBurger()" class="burder-icon">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+
+    @if (buregerToggle()) {
+      <div class="burger-menu">
+        <i class="fa-solid fa-xmark" (click)="toggleBurger()"></i>
+
+        <div class="burger-header">
+          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            {{ 'NAV.HOME' | translate }}
+          </a>
+
+          <a routerLink="/menu" routerLinkActive="active">
+            {{ 'NAV.MENU' | translate }}
+          </a>
+
+          <a routerLink="/about" routerLinkActive="active">
+            {{ 'NAV.ABOUT' | translate }}
+          </a>
+
+          <a routerLink="/gallery" routerLinkActive="active">
+            {{ 'NAV.GALLERY' | translate }}
+          </a>
+        </div>
+
+        <hr>
+
+        <div class="contact-div_burger">
+          <a class="contact-phone_burger" href="tel:+995598711717">
+            📞 +995 598 71 17 17
+          </a>
+
+          <select (change)="changeLang($event)">
+            <option disabled selected>
+              {{ 'LANGUAGE' | translate }}
+            </option>
+            <option value="ka">ქართული</option>
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+          </select>
+        </div>
+      </div>
+    }
+
+    <div class="contact-icon" (click)="toggleCont()">
+      <i class="fa-solid fa-phone"></i>
+    </div>
+
+    @if (isContOpen()) {
+      <div class="contact-div">
+        <div class="contact-header">
+          <p>{{ 'CONTACTS.TITLE' | translate }}</p>
+          <i class="fa-solid fa-circle-xmark close" (click)="toggleCont()"></i>
+        </div>
+
+        <a class="contact-phone" href="tel:995595225485">
+          <i class="fa-solid fa-phone-volume"></i> +995 595 225 485
+        </a>
+
+        <a class="contact-phone" href="https://wa.me/995595225485" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i> +995 595 225 485
+        </a>
+
+        <a class="mail" href="mailto:shakari.georgia@gmail.com">
+          <i class="fa-solid fa-envelope"></i> shakari.georgia@gmail.com
+        </a>
+      </div>
+    }
+  </section>
 </header>

@@ -1,38 +1,37 @@
-import { ChangeDetectorRef, Component, signal } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, signal } from '@angular/core';
 import { ProductService } from '../../services/product-service';
 import { ProductsResponseInterface } from '../../interfaces/products-response-interface';
 import { ProductCarts } from '../product-carts/product-carts';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth-service';
+import { TranslatePipe } from '../../pipes/translate-pipe-pipe';
+import { LangService } from '../../services/lang-service';
 
 @Component({
   selector: 'app-home',
-  imports: [ProductCarts, RouterLink],
+  imports: [ProductCarts, RouterLink, TranslatePipe],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
 export class Home {
-  //ვინახავთ ყველა პროდუქტს ცვლაში სიგნალის საშუალებით
-  allProducts = signal<ProductsResponseInterface | null>(null);
+
+langService = inject(LangService)
+
+  private productService = inject(ProductService);
+
+  allProducts = this.productService.products;
 
   constructor(
-    private productService: ProductService,
+   
     private change: ChangeDetectorRef,
     private authService: AuthService,
   ) {}
 
   ngOnInit() {
-    this.AllProducts();
+    console.log(this.allProducts);
+
+    
   }
 
-  //ყველა პროდუქტების ჩატვირთვა
-  AllProducts() {
-    this.productService.getAllProducts().subscribe({
-      next: (data) => {
-        this.allProducts.set(data);
 
-        this.change.detectChanges();
-      },
-    });
-  }
 }

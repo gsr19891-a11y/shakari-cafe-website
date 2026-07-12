@@ -14,7 +14,7 @@ import { AuthService } from './auth-service';
 export class ProductService {
 
   
-  public products = signal<any>([]);//ინახება ყველა კერძები
+
   public categories = signal<any>([]);//ინახება ყველა კერძების კატეგორია
   public cartQuantity = signal(0);//ვინახავთ დამატებული კერძების რაოდენობას
 
@@ -184,6 +184,154 @@ checkout(){
     }
   })
 }
+
+
+
+
+
+
+
+
+public products = [
+  {
+    id:1,
+    name:"Choux Rose(Shu)",
+    image1:"/shu1.png",
+    image2:"/shu2.png",
+    price:8,
+    vegeterian:false,
+    categoryId: 1
+  },
+   {
+    id:2,
+    name:"Choux Cream Cake",
+    image1:"/cake1.png",
+    image2:"/cake2.png",
+    price:8,
+    vegeterian:false,
+    categoryId: 1
+  },
+    {
+    id:3,
+    name:"Eclairs",
+    image1:"/ecl1.png",
+    image2:"/ecl2.png",
+    image3:"/ecl3.png",
+    image4:"/ecl4.png",
+    image5:"/ecl5.png",
+    price:20,
+    vegeterian:false,
+    categoryId: 1
+  },
+    {
+    id:4,
+    name:"Strawberry in Chocolate",
+    image1:"/str1.png",
+    image2:"/str2.png",
+    image3:"/str3.png",
+    price:8,
+    vegeterian:false,
+    categoryId: 1
+  },
+    {
+    id:5,
+    name:"Syrniki with persimmon",
+    image1:"/sir1.png",
+    image2:"/sir2.png",
+    price:8,
+    vegeterian:false,
+    categoryId: 1
+  },
+    {
+    id:6,
+    name:"Herring",
+    image1:"/herring.png",
+    price:12,
+    vegeterian:false,
+    categoryId: 2
+  },
+    {
+    id:7,
+    name:"Olivier",
+    image1:"/oliv.png",
+    price:12,
+    vegeterian:false,
+    categoryId: 2
+  },
+    {
+    id:8,
+    name:"Vinaigrette",
+    image1:"/vin.png",
+    price:7,
+    vegeterian:true,
+    categoryId: 2
+  },
+    {
+    id:9,
+    name:"Chickpea Soup",
+    image1:"/chi.png",
+    price:6,
+    vegeterian:false,
+    categoryId: 2
+  },
+    {
+    id:10,
+    name:"Buckwheat",
+    image1:"/buck.png",
+    price:5,
+    vegeterian:true,
+    categoryId: 2
+  },
+    {
+    id:11,
+    name:"Scramles",
+    image1:"/scra.png",
+    price:24,
+    vegeterian:false,
+    categoryId: 2
+  },
+    {
+    id:12,
+    name:"Rice",
+    image1:"/rice.png",
+    price:5,
+    vegeterian:true,
+    categoryId: 2
+  },
+    {
+    id:13,
+    name:"Bryanik",
+    image1:"/bry.png",
+    price:24,
+    vegeterian:false,
+    categoryId: 2
+  },
+    {
+    id:14,
+    name:"Briosche",
+    image1:"/bri.png",
+    price:14,
+    vegeterian:true,
+    categoryId: 2
+  },
+    {
+    id:15,
+    name:"Bliny Classic ",
+    image1:"/blic.png",
+    price:12,
+    vegeterian:false,
+    categoryId: 2
+  },
+
+]
+
+
+
+
+
+
+
+
 
 
 

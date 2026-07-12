@@ -1,0 +1,189 @@
+$primary-color: #d1410c; // Твой фирменный терракотовый цвет кнопок
+$text-dark: #1f2937;
+$text-muted: #4b5563;
+$bg-light: #f9fafb;
+$transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+.gallery-hero {
+  position: relative;
+  height: 35vh;
+  min-height: 280px;
+  background: url('/backk.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+
+  .hero-container {
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+
+      @media (max-width: 768px) {
+        font-size: 2.2rem;
+      }
+    }
+
+    p {
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 0 auto;
+      opacity: 0.9;
+
+      @media (max-width: 768px) {
+        font-size: 0.95rem;
+      }
+    }
+  }
+}
+
+.gallery-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+// Сетка галереи
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+  margin-bottom: 70px;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr; // На совсем маленьких экранах в один ряд
+    gap: 15px;
+  }
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  background: #fff;
+  aspect-ratio: 4 / 3; // Все картинки будут автоматически одинакового аккуратного размера
+
+  .image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: $transition;
+    }
+
+    // Градиентное затемнение при наведении
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 100%);
+      opacity: 0;
+      transition: $transition;
+      display: flex;
+      align-items: flex-end;
+      padding: 25px;
+    }
+
+    .overlay-text {
+      color: #ffffff;
+      transform: translateY(15px);
+      transition: $transition;
+
+      h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      p {
+        font-size: 0.9rem;
+        opacity: 0.85;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+    }
+  }
+
+  // Эффекты при наведении ховера
+  &:hover {
+    .image-wrapper img {
+      transform: scale(1.08); // Легкое увеличение картинки
+    }
+
+    .image-overlay {
+      opacity: 1; // Проявление текста и тени
+    }
+
+    .overlay-text {
+      transform: translateY(0); // Плавное приподнимание текста вверх
+    }
+  }
+}
+
+// Нижняя часть под галереей
+.gallery-footer {
+  text-align: center;
+  background: $bg-light;
+  padding: 45px 20px;
+  border-radius: 16px;
+  border: 1px solid #f3f4f6;
+
+  h2 {
+    font-size: 2rem;
+    color: $text-dark;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  p {
+    color: $text-muted;
+    font-size: 1.05rem;
+    margin-bottom: 25px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-order {
+    background-color: $primary-color;
+    color: #ffffff;
+    border: none;
+    padding: 14px 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      background-color: darken($primary-color, 7%);
+      box-shadow: 0 4px 15px rgba(209, 65, 12, 0.3);
+    }
+  }
+}

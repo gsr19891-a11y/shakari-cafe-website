@@ -1,0 +1,75 @@
+{
+"HOME_PAGE": {
+    "HERO_TITLE": "Syrniki • Bliny • Coffee & Dessert",
+    "HERO_SUBTITLE": "Fresh & Frozen Tbilisi delivery",
+    "HERO_BTN": "Check Now",
+    "POPULAR_TITLE": "Popular Dishes",
+    "STORY_TITLE": "Our Story",
+    "STORY_DESC1": "At Shakari, we believe that great food brings people together. Our chefs use only the freshest ingredients to create dishes that delight your taste buds and warm your heart.",
+    "STORY_DESC2": "From traditional recipes passed down through generations to innovative modern cuisine, every dish is crafted with passion and care. We're committed to delivering not just meals, but memorable dining experiences right to your door.",
+    "STORY_BTN": "Explore Our Menu"
+  },
+    "LANGUAGE": "Language",
+
+  "NAV": {
+    "HOME": "Home",
+    "MENU": "Menu",
+    "ABOUT": "About Us",
+    "GALLERY": "Gallery"
+  },
+
+  "CONTACTS": {
+    "TITLE": "Our Contacts"
+  },
+  "ABOUT": {
+    "HERO": {
+      "TITLE": "About SHAKARI Cafe",
+      "SUBTITLE": "Homemade food cooked with love and delivered straight to your table in Tbilisi"
+    },
+    "STORY": {
+      "BADGE": "SHAKARI",
+      "TITLE": "Our Story",
+      "TEXT1": "Welcome to SHAKARI Cafe! We began our journey with a simple idea: to bring back the authentic, warm, and comforting taste of homemade syrniki and bliny that everyone loves.",
+      "TEXT2": "We carefully select fresh cottage cheese, use natural ingredients, and prepare everything by hand. Our menu features not only traditional breakfasts but also exquisite French pastries, éclairs, and specialty coffee."
+    },
+    "VALUES": {
+      "TITLE": "Why Choose Us",
+      "FRESH": {
+        "TITLE": "Always Fresh",
+        "TEXT": "We prepare our dishes daily and deliver them hot and fresh, or frozen for your maximum convenience."
+      },
+      "INGREDIENTS": {
+        "TITLE": "Pure Ingredients",
+        "TEXT": "No artificial additives or preservatives. Only premium cottage cheese, fresh berries, and high-quality chocolate."
+      },
+      "DELIVERY": {
+        "TITLE": "Tbilisi Delivery",
+        "TEXT": "Careful and prompt delivery across Tbilisi to ensure your breakfast or dessert arrives perfectly."
+      }
+    },
+    "CTA": {
+      "TITLE": "Hungry Yet?",
+      "TEXT": "Explore our popular dishes and put together your perfect meal order.",
+      "BUTTON": "View Menu"
+    },
+    "MAP": {
+      "TITLE": "Our Location"
+    }
+  },
+    "GALLERY": {
+    "HERO": {
+      "TITLE": "Our Gallery",
+      "SUBTITLE": "A glimpse into our delicious world of handmade desserts, syrniki, and savory dishes"
+    },
+    "FOOTER": {
+      "TITLE": "Want to try these?",
+      "TEXT": "All items are prepared daily using premium ingredients and are available for delivery.",
+      "BUTTON": "Check Now"
+    }
+  },
+    "PRODUCT_DETAILS": {
+    "DESCRIPTION": "At Shakari you will find not only traditional breakfasts, but also exquisite French pastries, delicious éclairs and our signature coffee!",
+    "YOU_MAY_ALSO_LIKE": "You May Also Like"
+  }
+
+}

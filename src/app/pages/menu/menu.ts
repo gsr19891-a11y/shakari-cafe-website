@@ -1,10 +1,23 @@
-import { ChangeDetectorRef, Component, signal } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ProductService } from '../../services/product-service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ProductCarts } from '../product-carts/product-carts';
+
+export interface Product {
+  id: number;
+  name: string;
+  image1: string;
+  image2?: string;
+  image3?: string;
+  image4?: string;
+  image5?: string;
+  price: number;
+  vegeterian: boolean;
+  categoryId: number;
+}
 
 @Component({
   selector: 'app-menu',
@@ -14,8 +27,6 @@ import { ProductCarts } from '../product-carts/product-carts';
   styleUrl: './menu.scss',
 })
 export class Menu {
-  categories = signal<any>([]);
-  products = signal<any>([]);
   curPage = signal(1);
   hasNextPage = signal(true);
   allCart = signal<any>('');
@@ -23,21 +34,38 @@ export class Menu {
   filterForm!: FormGroup;
   filterButton: boolean = true;
 
+  private productService = inject(ProductService);
+
   constructor(
-    private productService: ProductService,
     private change: ChangeDetectorRef,
     private fb: FormBuilder,
   ) {}
 
-  //გვერდის შეცვლა
+  public products: Product[] = this.productService.products;
+
+  public categories = [
+    { id: 1, name: 'Desserts' },
+    { id: 2, name: 'Main Dishes' },
+  ];
+
+  public filteredProducts: Product[] = [];
+ 
+
+
+
+
+
+
+
+
+
   setPage(page: number) {
     this.filterForm.patchValue({
       page: page,
     });
-    this.onSubmit();
+
   }
 
-  //შემდეგი გვერდი
   nextPage() {
     const currentPage = this.filterForm.get('page')?.value || 1;
 
@@ -45,7 +73,7 @@ export class Menu {
       page: currentPage + 1,
     });
 
-    this.onSubmit();
+
   }
 
   //წინა გვერდი
@@ -57,118 +85,74 @@ export class Menu {
         page: currentPage - 1,
       });
 
-      this.onSubmit();
+      
     }
   }
 
   ngOnInit() {
-    this.productService.getCategories().subscribe({
-      next: (data: any) => {
-        this.categories.set(data?.data);
-
-        console.log(this.categories());
-
-        this.change.detectChanges();
-      },
-    });
 
     this.filterForm = this.fb.group({
       query: [''],
-      vegetarian: [false],
-      spiciness: [0],
-      rate: [0],
-      minPrice: [0],
-      maxPrice: [9999],
-      CategoryId: [0],
-      take: [12],
-      page: [1],
+      CategoryId: [null], 
+      minPrice: [null],
+      maxPrice: [null]
     });
 
-    //ფილტრაცია
-    this.onSubmit();
-    this.filterForm.get('query')?.valueChanges.subscribe(() => {
-      this.resetPageAndFilter();
+  
+    this.filteredProducts = [...this.products];
+
+
+    this.filterForm.valueChanges.subscribe(filters => {
+      this.applyFilters(filters);
     });
 
-    this.filterForm.get('vegetarian')?.valueChanges.subscribe(() => {
-      this.resetPageAndFilter();
-    });
-
-    this.filterForm.get('spiciness')?.valueChanges.subscribe(() => {
-      this.resetPageAndFilter();
-    });
-
-    this.filterForm.get('rate')?.valueChanges.subscribe(() => {
-      this.resetPageAndFilter();
-    });
-
-    this.filterForm.get('minPrice')?.valueChanges.subscribe(() => {
-      this.resetPageAndFilter();
-    });
-
-    this.filterForm.get('maxPrice')?.valueChanges.subscribe(() => {
-      this.resetPageAndFilter();
-    });
-
-    this.filterForm.get('CategoryId')?.valueChanges.subscribe(() => {
-      this.resetPageAndFilter();
-    });
   }
 
-  //ფილტრის წაშლა
-  resetPageAndFilter() {
-    this.filterForm.patchValue({ page: 1 }, { emitEvent: false });
+  private applyFilters(filters: any) {
+    const searchStr = (filters.query || '').toLowerCase().trim();
+    const catId = filters.CategoryId ? Number(filters.CategoryId) : null;
+    const min = filters.minPrice !== null && filters.minPrice !== '' ? Number(filters.minPrice) : null;
+    const max = filters.maxPrice !== null && filters.maxPrice !== '' ? Number(filters.maxPrice) : null;
 
-    this.onSubmit();
-  }
+    this.filteredProducts = this.products.filter(product => {
 
-  onSubmit() {
-    this.productService.filterService(this.filterForm.value).subscribe({
-      next: (data: any) => {
-        this.products.set(data.data.products);
-
-        this.hasNextPage.set(this.products().length === this.filterForm.get('take')?.value);
-
-        this.curPage.set(this.filterForm.get('page')?.value);
-
-        this.change.detectChanges();
-      },
-    });
-  }
-
-  //კალათაში დამატება
-  addToCart(id: number) {
-    const body = {
-      productId: id,
-      quantity: 1,
-    };
-
-    this.productService.addToCart(body).subscribe({
-      next: () => {
-        alert('Product added to cart successfully');
-
-        this.productService.loadCart().subscribe({
-          next: (cartData: any) => {
-            this.productService.cartQuantity.set(cartData.data.items.length);
-          },
-        });
-      },
-      error:()=>{
-        alert('Please log in to add items to your cart.')
+      if (searchStr && !product.name.toLowerCase().includes(searchStr)) {
+        return false;
       }
+
+   
+      if (catId && product.categoryId !== catId) {
+        return false;
+      }
+
+      if (min !== null && product.price < min) {
+        return false;
+      }
+
+      if (max !== null && product.price > max) {
+        return false;
+      }
+
+      return true;
     });
   }
 
 
-//ფილტრაციის გვერდის გამოჩენა/დამალვა ტელეფონებისთვის
+  public resetFilters() {
+    this.filterForm.reset({
+      query: '',
+      CategoryId: null,
+      minPrice: null,
+      maxPrice: null
+    });
+  }
+
   filterButtonToggle() {
     this.filterButton = !this.filterButton;
   }
 
 
-
-
-
+  
 
 
 }

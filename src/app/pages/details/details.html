@@ -1,110 +1,101 @@
 <div class="product-details-wrapper">
   <div class="container">
 
-    <i (click)="backToMenu()" class="fa-solid fa-arrow-left exit-btn"></i>
-    <div class="product-layout">
-      <div class="image-section">
-        <img [src]="product()?.data?.image" [alt]="product()?.data?.name" />
-      </div>
+    <button (click)="backToMenu()" class="exit-btn">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
 
-      <div class="info-section">
-        <h1>{{ product()?.data?.name }}</h1>
+    <div class="product-main-card">
+      <div class="product-layout">
 
-        <div class="rating-row">
-          <div class="stars">
-            @for (star of stars; track star) {
-              @if ((product()?.data?.rate ?? 0) >= star) {
-                <i class="fa-solid fa-star active"></i>
-              } @else if ((product()?.data?.rate ?? 0) >= star - 0.5) {
-                <i class="fa-solid fa-star-half-stroke active"></i>
-              } @else {
-                <i class="fa-regular fa-star star"></i>
-              }
-            }
+        <div class="image-section">
+          <div class="main-image-container">
+            <img [src]="currentMainImage()" [alt]="product()?.name" class="main-img" />
           </div>
-
-          <span>{{ product()?.data?.rate }}</span>
-        </div>
-
-        <h2 class="price">{{ product()?.data?.price | currency: 'USD' : 'symbol' : '1.2-2' }}</h2>
-
-        <div class="vegetarian-badge">
-          @if (product()?.data?.vegetarian) {
-            <i class="fa-solid fa-leaf"></i>
-            Vegetarian
-          }
-        </div>
-
-        @if (product()?.data?.spiciness) {
-          <div class="vegetarian-badge">
-            <i class="fa-solid fa-pepper-hot"></i>
-            Spicy
-          </div>
-        }
-
-        <p class="description">
-          {{ product()?.data?.description }}
-        </p>
-
-        <div class="ingredients-section">
-          <h3>Ingredients:</h3>
-
-          @for (item of product()?.data?.ingredients; track $index) {
-            <ul>
-              <li>{{ item }}</li>
-            </ul>
-          }
-        </div>
-
-        <div class="method-section">
-          <h3>Preparation Method:</h3>
-
-          <p>
-            {{ product()?.data?.method }}
-          </p>
-        </div>
 
       
-  <div class="quantity-wrapper">
-    <button (click)="decrement()">-</button>
-    <span>{{ quantity() }}</span>
-    <button (click)="increment()">+</button>
-  </div>
-  
-<button
-  class="cart-btn"
-  (click)="product()?.data?.id && addToCart(product()!.data.id)"
->
-  Add to Cart
-</button>
+
+          @if (productImages().length > 1) {
+            <div class="thumbnails-grid">
+              @for (img of productImages(); track $index) {
+                <div
+                  class="thumbnail-item"
+                  [class.active]="img === currentMainImage()"
+                  (click)="changeImage(img)"
+                >
+                  <img [src]="img" alt="Product thumbnail" />
+                </div>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="info-section">
+
+          <h1>{{ product()?.name }}</h1>
+
+          <div class="rating-row">
+            <div class="stars">
+              <i class="fa-solid fa-star active"></i>
+              <i class="fa-solid fa-star active"></i>
+              <i class="fa-solid fa-star active"></i>
+              <i class="fa-solid fa-star active"></i>
+              <i class="fa-solid fa-star active"></i>
+            </div>
+
+            <span>{{ randomNum() }}</span>
+          </div>
+
+          <h2 class="price">{{ product()?.price }} ₾</h2>
+
+          <p class="description">
+            {{ langService.translate('PRODUCT_DETAILS.DESCRIPTION') }}
+          </p>
+
+      @if(product().vegeterian === true) {
+            <span class="veg">Vegetarian! <i class="fa-solid fa-leaf"></i> </span>
+          
+          }
+
+         <div class="purchase-actions">
+            <div class="quantity-wrapper">
+              <button (click)="decrementDays()">-</button>
+              <span>{{ Count()}}</span>
+              <button (click)="incrementDays()">+</button>
+
+            </div> 
+            <p class="total-price">Total Price: {{totalPrice()}}</p>
+
+            <button class="cart-btn"  (click)="sendToWhatsapp(product())" >
+              <i class="fa-solid fa-paper-plane"></i> Write 
+            </button>
+
+        </div>
 
       </div>
     </div>
 
     <section class="section2">
-      <h2>You May Also Like</h2>
-<div class="product-cards">
-        
+      <h2>{{ langService.translate('PRODUCT_DETAILS.YOU_MAY_ALSO_LIKE') }}</h2>
+
+      <div class="product-cards">
         @for (product of allProduct(); track product.id) {
-     <div class="product-card" [routerLink]="['/details', product.id]">
-      <div class="product-img">
-          <img [src]="product.image" [alt]="product.name">
+          <div class="product-card" [routerLink]="['/details', product.id]">
+
+            <div class="product-img">
+              <img [src]="product.image1" [alt]="product.name">
+            </div>
+
+            <div class="product-info">
+              <h2>{{ product.name }}</h2>
+              <div class="price">{{ product.price }} ₾</div>
+            </div>
+
+          </div>
+        }
       </div>
-  
-      <div class="product-info">
-          <h2>{{product.name}}</h2>
-          <p>{{product.description}}</p>
-          
-          <span class="rate">{{product.rate}}</span>
-          
-          <div class="price">{{product.price | currency:'USD':'symbol':'1.2-2'}}</div>
-          
-          <button (click)="addToCart(product.id); $event.stopPropagation()">Add to Cart</button>
-      </div>
-  </div>
-  }
-</div>
+
     </section>
-    
+
   </div>
 </div>

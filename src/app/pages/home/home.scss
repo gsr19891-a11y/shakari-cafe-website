@@ -20,15 +20,14 @@ main {
       background-image: url('/restaurant-food-spread.png');
       background-position: center;
       background-size: cover;
-      filter: brightness(60%);
+      filter: brightness(40%);
       z-index: -1;
     }
 
     .main-section1 {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    align-items: center;
       gap: 20px;
 
       button {
@@ -51,7 +50,7 @@ main {
       }
 
       h1 {
-        width: 50%;
+        width: 100%;
         color: white;
         font-size: 60px;
         text-align: center;

@@ -44,10 +44,11 @@ footer {
         margin-top: 20px;
         font-size: 18px;
         
-        i {
+        i, a {
           cursor: pointer;
           transition: color 0.3s;
-          &:hover { color: #ff6b35; }
+          color: #ff6b35;
+          &:hover { color: #ff571a; }
         }
       }
 

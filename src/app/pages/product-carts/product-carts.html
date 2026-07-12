@@ -1,20 +1,16 @@
 
-@for (product of allProducts()?.data?.products; track product.id) {
+@for (product of allProducts; track product.id) {
    <div class="product-card" [routerLink]="['/details', product.id]">
     <div class="product-img">
-        <img [src]="product.image" [alt]="product.name">
+        <img [src]="product.image1" [alt]="product.name">
     </div>
 
     <div class="product-info">
         <h2>{{product.name}}</h2>
-        <p>{{product.description}}</p>
-        
-        <span class="rate">{{product.rate}}</span>
-        
-        <div class="price">{{product.price | currency:'USD':'symbol':'1.2-2'}}</div>
-        
-        <button (click)="addToCart(product.id); $event.stopPropagation()">Add to Cart</button>
+        <div class="price">{{product.price}} ₾</div>
     </div>
+
+    
 </div>
 }
 

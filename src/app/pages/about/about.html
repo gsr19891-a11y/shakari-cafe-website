@@ -1,0 +1,121 @@
+<section class="about-hero">
+  <div class="hero-overlay"></div>
+
+  <div class="hero-container">
+    <h1>{{ 'ABOUT.HERO.TITLE' | translate }}</h1>
+    <p>{{ 'ABOUT.HERO.SUBTITLE' | translate }}</p>
+  </div>
+</section>
+
+<div class="about-container">
+
+  <section class="story-section">
+
+    <div class="story-text">
+      <span class="badge">
+        {{ 'ABOUT.STORY.BADGE' | translate }}
+      </span>
+
+      <h2>{{ 'ABOUT.STORY.TITLE' | translate }}</h2>
+
+      <p>
+        {{ 'ABOUT.STORY.TEXT1' | translate }}
+      </p>
+
+      <p>
+        {{ 'ABOUT.STORY.TEXT2' | translate }}
+      </p>
+    </div>
+
+    <div class="story-image">
+      <img
+        src="/sir1.png"
+        alt="Our delicious syrniki"
+      />
+    </div>
+
+  </section>
+
+  <section class="values-section">
+
+    <h2>{{ 'ABOUT.VALUES.TITLE' | translate }}</h2>
+
+    <div class="values-grid">
+
+      <div class="value-card">
+        <div class="icon-wrapper">🥞</div>
+
+        <h3>
+          {{ 'ABOUT.VALUES.FRESH.TITLE' | translate }}
+        </h3>
+
+        <p>
+          {{ 'ABOUT.VALUES.FRESH.TEXT' | translate }}
+        </p>
+      </div>
+
+      <div class="value-card">
+        <div class="icon-wrapper">🍓</div>
+
+        <h3>
+          {{ 'ABOUT.VALUES.INGREDIENTS.TITLE' | translate }}
+        </h3>
+
+        <p>
+          {{ 'ABOUT.VALUES.INGREDIENTS.TEXT' | translate }}
+        </p>
+      </div>
+
+      <div class="value-card">
+        <div class="icon-wrapper">🛵</div>
+
+        <h3>
+          {{ 'ABOUT.VALUES.DELIVERY.TITLE' | translate }}
+        </h3>
+
+        <p>
+          {{ 'ABOUT.VALUES.DELIVERY.TEXT' | translate }}
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="about-cta">
+
+    <h3>{{ 'ABOUT.CTA.TITLE' | translate }}</h3>
+
+    <p>
+      {{ 'ABOUT.CTA.TEXT' | translate }}
+    </p>
+
+    <button
+      routerLink="/menu"
+      class="btn-menu">
+      {{ 'ABOUT.CTA.BUTTON' | translate }}
+    </button>
+
+  </section>
+
+  <section class="map-section">
+
+    <h2>{{ 'ABOUT.MAP.TITLE' | translate }}</h2>
+
+    <div class="map-container">
+
+      <iframe
+        src="https://maps.google.com/maps?q=41.7019218,44.766987&z=16&output=embed"
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+
+    </div>
+
+  </section>
+
+</div>

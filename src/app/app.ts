@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
 
@@ -11,4 +11,18 @@ import { Footer } from './components/footer/footer';
 })
 export class App {
   protected readonly title = signal('resturantProject');
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+
+        window.scrollTo(0, 0);
+        const contentContainer = document.querySelector('.main-content-container');
+        if (contentContainer) {
+          contentContainer.scrollTop = 0;
+        }
+      }
+    });
+  }
 }

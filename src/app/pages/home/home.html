@@ -1,36 +1,39 @@
-<main>
-  <section class="section">
-    <div class="main-section1">
-      <h1>Delicious Food Delivered to Your Door</h1>
-      <p>Fresh ingredients, authentic flavors, fast delivery</p>
-      <button routerLink="/menu">Order Now</button>
-    </div>
-  </section>
+@if (langService.isLoaded()) {
+  <main>
+    <section class="section">
+      <div class="main-section1">
+        <h1>{{ 'HOME_PAGE.HERO_TITLE' | translate }}</h1>
+        <p>{{ 'HOME_PAGE.HERO_SUBTITLE' | translate }}</p>
+        <button routerLink="/menu">{{ 'HOME_PAGE.HERO_BTN' | translate}}</button>
+      </div>
+    </section>
 
-  <section class="section2">
-    <h2>Popular Dishes</h2>
-    <div>
-      <app-product-carts class="popular-cards"></app-product-carts>
-    </div>
-  </section>
+    <section class="section2">
+      <h2>{{ 'HOME_PAGE.POPULAR_TITLE' | translate }}</h2>
+      <div>
+        <app-product-carts class="popular-cards"></app-product-carts>
+      </div>
+    </section>
 
- <section class="story-section">
-  <div class="story-image">
-    <img src="/restaurant-kitchen-chef-cooking.jpg" alt="chef image" />
-  </div>
+    <section class="story-section">
+      <div class="story-image">
+        <img src="/about.png" alt="chef image" />
+      </div>
 
-    <div class="story-content">
-      <h3>Our Story</h3>
-      <p class="home-p-text">
-        At Foodie, we believe that great food brings people together. Our chefs use only the
-        freshest ingredients to create dishes that delight your taste buds and warm your heart.
-      </p>
-      <p class="home-p-text">
-        From traditional recipes passed down through generations to innovative modern cuisine, every
-        dish is crafted with passion and care. We're committed to delivering not just meals, but
-        memorable dining experiences right to your door.
-      </p>
-      <button class="btn-primary" routerLink="/menu">Explore Our Menu</button>
-    </div>
-  </section>
-</main>
+      <div class="story-content">
+        <h3>{{ 'HOME_PAGE.STORY_TITLE' | translate }}</h3>
+        <p class="home-p-text">
+          {{ 'HOME_PAGE.STORY_DESC1' | translate}}
+        </p>
+        <p class="home-p-text">
+          {{ 'HOME_PAGE.STORY_DESC2' | translate }}
+        </p>
+        <button class="btn-primary" routerLink="/menu">
+          {{ 'HOME_PAGE.STORY_BTN' | translate }}
+        </button>
+      </div>
+    </section>
+  </main>
+} @else {
+  <div class="loader">Loading...</div>
+}

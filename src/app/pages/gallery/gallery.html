@@ -1,0 +1,38 @@
+<section class="gallery-hero">
+  <div class="hero-overlay"></div>
+
+  <div class="hero-container">
+    <h1>{{ langService.translate('GALLERY.HERO.TITLE') }}</h1>
+    <p>{{ langService.translate('GALLERY.HERO.SUBTITLE') }}</p>
+  </div>
+</section>
+
+<div class="gallery-container">
+
+  <div class="gallery-grid">
+    @for (item of galleryItems; track $index) {
+      <div class="gallery-item">
+        <div class="image-wrapper">
+          <img [src]="item.image" [alt]="item.title" />
+
+          <div class="image-overlay">
+            <div class="overlay-text">
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.category }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <section class="gallery-footer">
+    <h2>{{ langService.translate('GALLERY.FOOTER.TITLE') }}</h2>
+    <p>{{ langService.translate('GALLERY.FOOTER.TEXT') }}</p>
+
+    <button routerLink="/menu" class="btn-order">
+      {{ langService.translate('GALLERY.FOOTER.BUTTON') }}
+    </button>
+  </section>
+
+</div>

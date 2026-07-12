@@ -1,0 +1,235 @@
+// Переменные для удобства поддержки цвета
+$primary-color: #d1410c; // Твой фирменный оранжевый/терракотовый
+$text-dark: #1f2937;
+$text-muted: #4b5563;
+$bg-light: #f9fafb;
+$transition: all 0.3s ease;
+
+.about-hero {
+  position: relative;
+  height: 45vh;
+  min-height: 350px;
+  background: url('/back2.jpg') center center; // Или фоновое изображение блюда
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55); // Затемнение картинки
+    z-index: 1;
+  }
+
+  .hero-container {
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+
+      @media (max-width: 768px) {
+        font-size: 2.2rem;
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      opacity: 0.9;
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+
+// Секция Истории
+.story-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  margin-bottom: 80px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .story-text {
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      background-color: lighten($primary-color, 45%);
+      color: $primary-color;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border-radius: 20px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    h2 {
+      font-size: 2.4rem;
+      color: $text-dark;
+      margin-bottom: 20px;
+      font-weight: 700;
+
+      @media (max-width: 768px) {
+        font-size: 1.8rem;
+      }
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: $text-muted;
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+  }
+
+  .story-image {
+    display: flex;
+    justify-content: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      object-fit: cover;
+      max-height: 400px;
+    }
+  }
+}
+
+// Секция Ценностей
+.values-section {
+  text-align: center;
+  margin-bottom: 80px;
+  padding: 40px 0;
+
+  h2 {
+    font-size: 2.2rem;
+    color: $text-dark;
+    margin-bottom: 40px;
+    font-weight: 700;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+
+  .value-card {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    transition: $transition;
+    border: 1px solid #f3f4f6;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .icon-wrapper {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      color: $text-dark;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: $text-muted;
+      line-height: 1.6;
+    }
+  }
+}
+
+
+.about-cta {
+  background: $bg-light;
+  padding: 50px 30px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px dashed lighten($primary-color, 30%);
+
+  h3 {
+    font-size: 1.8rem;
+    color: $text-dark;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  p {
+    color: $text-muted;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+  }
+
+  .btn-menu {
+    background-color: $primary-color;
+    color: #ffffff;
+    border: none;
+    padding: 14px 35px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      background-color: darken($primary-color, 7%);
+      box-shadow: 0 4px 15px rgba(209, 65, 12, 0.3);
+    }
+  }
+}
+
+.map-section{
+    margin-top: 80px;
+.map-container {
+  width: 100%;
+  height: 400px; /* Задай нужную высоту */
+  margin: 40px 0;
+  border-radius: 16px; /* Округляем углы под стиль карточек */
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Мягкая тень */
+  border: 1px solid #f3f4f6;
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
+}
