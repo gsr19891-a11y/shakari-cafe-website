@@ -5,6 +5,8 @@ import { ProductsResponseInterface } from '../interfaces/products-response-inter
 import { DetailsProductInterface } from '../interfaces/details-product-interface';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { AuthService } from './auth-service';
+import { map, Observable } from 'rxjs';
+import { Dish } from '../interfaces/Dish';
 
 
 @Injectable({
@@ -186,7 +188,7 @@ checkout(){
 }
 
 
-
+public apiUrl = 'https://sheetdb.io/api/v1/xjz8e71xjxt6a';
 
 
 
@@ -213,7 +215,7 @@ public products = [
   },
     {
     id:3,
-    name:"Eclairs",
+    name:"Eclair",
     image1:"/ecl1.webp",
     image2:"/ecl2.webp",
     image3:"/ecl3.webp",
@@ -316,7 +318,7 @@ public products = [
   },
     {
     id:15,
-    name:"Bliny Classic ",
+    name:"Bliny Classic",
     image1:"/blic.webp",
     price:12,
     vegeterian:false,
@@ -328,6 +330,24 @@ public products = [
 
 
 
+getMenu(): Observable<Dish[]> {
+    return this.http.get<any[]>(this.apiUrl).pipe(
+      map(data => data.map(item => ({
+        id: Number(item.id),
+        name: item.name,
+        categoryId: Number(item.categoryId),
+        price: Number(item.price),
+        vegetarian: item.vegetarian?.toUpperCase() === 'TRUE',
+        image1: item.image1,
+        image2: item.image2 || null,
+        image3: item.image3 || null
+      })
+
+    
+    ))
+      
+    );
+  }
 
 
 

@@ -19,13 +19,28 @@ langService = inject(LangService)
 
   private productService = inject(ProductService);
 
-  allProducts = this.productService.products;
+
 
   constructor(
    
     private change: ChangeDetectorRef,
     private authService: AuthService,
   ) {}
+
+
+  ngOnInit() {
+    this.productService.getMenu().subscribe({
+      next: (data: any) => {
+        this.productService.products = data;
+        this.change.detectChanges(); 
+        console.log(this.productService.products);
+      },
+      error: (err) => {
+        console.error('Ошибка при загрузке меню из Google Таблиц:', err);
+      }
+    })
+  }
+
 
 
 

@@ -32,8 +32,19 @@ export class ProductCarts {
 
   ngOnInit() {
 
+    this.productService.getMenu().subscribe({
+      next: (data: any) => {
+        this.productService.products = data;
+        this.allProducts = this.productService.products
+        this.change.detectChanges(); 
+        console.log(this.productService.products);
+      },
+      error: (err) => {
+        console.error('Ошибка при загрузке меню из Google Таблиц:', err);
+      }
+    })
 
-    this.allProducts = this.productService.products
+
     console.log(this.allProducts);
 
   }
